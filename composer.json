@@ -17,7 +17,7 @@
         "Jamba\\": "src/Jamba/"
       }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "1.0",
     "require": {
       "php": ">=5.4.0"
     }
