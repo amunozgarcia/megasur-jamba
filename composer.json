@@ -1,0 +1,24 @@
+{
+    "name": "megasur/jamba",
+    "description": "Sistema jamba powered by megasur",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aure Muñoz",
+            "email": "amunoz@megasur.es"
+        }
+    ],
+    "autoload": {
+      "files": [
+        "src/helpers.php"
+      ],
+      "psr-4": {
+        "Jamba\\": "src/Jamba/"
+      }
+    },
+    "minimum-stability": "dev",
+    "require": {
+      "php": ">=5.4.0"
+    }
+}
