@@ -1,6 +1,6 @@
 {
     "name": "megasur/jamba",
-    "description": "Sistema jamba powered by megasur",
+    "description": "Sistema Jamba desarrollado por Informática Megasur para Laravel 5",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -12,6 +12,8 @@
     "autoload": {
       "files": [
         "src/helpers.php"
+      ],
+      "classmap": [
       ],
       "psr-4": {
         "Jamba\\": "src/Jamba/"

@@ -1,7 +1,9 @@
 <?php  namespace Jamba\Ws;
 
 
-class WsConn {
+class WsConn
+{
+
 
     public function prueba()
     {
