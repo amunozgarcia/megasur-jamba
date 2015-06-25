@@ -7,7 +7,7 @@ return [
     | Nombre del servicio WS
     | ----------------------
     */
-    'service' => 'gestion',
+    'service' => 'central',
 
     /*
     | ---------------------

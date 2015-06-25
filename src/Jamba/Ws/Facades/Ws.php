@@ -8,6 +8,6 @@ class Ws extends Facade
 
     protected static function getFacadeAccessor()
     {
-        return 'Jamba/Ws';
+        return 'Jamba\Ws\Facade\Ws';
     }
 }
