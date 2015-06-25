@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\ServiceProvider;
+use Jamba\Ws\WsConn;
 
 class JambaServiceProvider extends ServiceProvider
 {
@@ -21,7 +22,7 @@ class JambaServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('Jamba/Ws', function ($app) {
-            return new WsConn();
+            return new WsConn($app);
         });
 
     }
