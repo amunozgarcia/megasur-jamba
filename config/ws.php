@@ -37,7 +37,7 @@ return [
     | Injección de clases para poder usar las funciones en un controlador con el comando Ws:: o WS()
     |
     */
-    'repositories' => App\Repositories\WsRepository::class,
+    'repositories' => '',
 
     /*
     | ---------------------

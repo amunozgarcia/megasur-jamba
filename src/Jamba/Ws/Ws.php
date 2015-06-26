@@ -3,6 +3,16 @@
 
 use App\Http\Controllers\Controller;
 
+/**
+ * Class Ws (Webservice)
+ * .....................
+ * Clase principal del paquete WS para controlar las llamadas al Webservice
+ * Contiene su propio Helpers con rutinas para facilitar la llamada a los facades
+ *
+ * @autor Aure Muñoz (26-06-2015)
+ *
+ * @package Jamba\Ws
+ */
 class Ws {
 
 
@@ -58,6 +68,9 @@ class Ws {
         //injección filtros de consultas
         $this->filter = $this->config['filter'];
 
+        //conectamos al webservice
+        $this->connect();
+
         //compruebo si viene un repositorio de carga
         if (!empty($this->config['repositories']))
         {
@@ -66,12 +79,11 @@ class Ws {
             {
                 //creo la instancia del repositorio
                 $this->repository = new $this->config['repositories'];
-                //dd($this->repository->prueba());
-                //dd("Existe");
+                //añado la conexión SOAP al repositorio
+                $this->repository->setSoap($this->soap());
             }
         }
-        //conectamos al webservice
-        $this->connect();
+
     }
 
     /**
@@ -144,10 +156,10 @@ class Ws {
         $this->isError = false;
 
         //compruebo si existe el metodo en el repositorio WS
-        if (method_exists($this, $consulta))
+        if (method_exists($this->repository, $consulta))
         {
             //hago la consulta al repositorio inyectado
-            $data = $this -> $consulta($parametro);
+            $data = $this->repository->$consulta($parametro);
             //muestro el error
             if (!$data)
             {
