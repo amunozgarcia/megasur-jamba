@@ -58,11 +58,17 @@ class Ws {
         //injección filtros de consultas
         $this->filter = $this->config['filter'];
 
-        if (class_exists($this->config['repositories']))
+        //compruebo si viene un repositorio de carga
+        if (!empty($this->config['repositories']))
         {
-            $this->repository = new $this->config['repositories'];
-            //dd($this->repository->prueba());
-            //dd("Existe");
+            //compruebo si la clase que intentamos carga existe
+            if (class_exists($this->config['repositories']))
+            {
+                //creo la instancia del repositorio
+                $this->repository = new $this->config['repositories'];
+                //dd($this->repository->prueba());
+                //dd("Existe");
+            }
         }
         //conectamos al webservice
         $this->connect();
