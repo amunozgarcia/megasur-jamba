@@ -24,6 +24,10 @@ class JambaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //Añado mi propio fichero de routes
+        if (!$this->app->routesAreCached()) {
+            require __DIR__.'/../../app/routes.php';
+        }
 
         //cargo la configuración WS
         $this->publishes(array(
