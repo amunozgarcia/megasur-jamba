@@ -45,21 +45,21 @@ class JambaServiceProvider extends ServiceProvider
         //Cargo la configuracion WS
         $this->mergeConfigFrom(__DIR__ . '/../../config/ws.php', 'ws');
 
-
-        //dd($this->app);
-
-        //dd($this->app['config']);
-        //dd($this->app['config']->get('ws.services'));
-
+        //cargo el Facade Ws
         $this->app->singleton('Jamba\Ws\Facade\Ws', function ($app) {
             return new Ws($app);
         });
 
-
+        //cargo Middleware Ws (filtro por ip)
         $this->app->singleton('Jamba\Ws\Middleware\WsMiddleware', function ($app) {
             return new WsMiddleware();
         });
 
+
+        //pruebas
+        //dd($this->app);
+        //dd($this->app['config']);
+        //dd($this->app['config']->get('ws.services'));
     }
 
     /**

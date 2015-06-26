@@ -5,20 +5,65 @@ use App\Http\Controllers\Controller;
 
 class Ws {
 
-    private $repository;
-    private $soap;
-    private $isError;
-    private $msgError;
-    private $filter;
-    private $config;
+
+    /**
+     * Contiene la conexión SOAP del servidor
+     * @var
+     */
+    protected $soap;
+
+    /**
+     * Comprobación si hay un error en la ultima consulta
+     * @var boolean
+     */
+    protected $isError = false;
+
+    /**
+     * Contiene el mensaje de error de la ultima consulta
+     * @var string
+     */
+    protected $msgError = "";
+
+    /**
+     * Contiene los filtros que se van hacer despues de una consulta
+     * Se usa como limpieza de código y facilita el desarrollo
+     * @var array
+     */
+    protected $filter = array();
+
+    /**
+     * Contiene la configuración WS establecida en el sistema
+     * @var
+     */
+    protected $config = array();
+
+    /**
+     * Injección de dependencias, contiene la clase de la libreria
+     * cargada por el desarrollador.
+     * Esta clase es independiente del package, puede estar en tu
+     * proyecto.
+     *
+     * @var
+     */
+    protected $repository;
 
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         //
         $this->config = config('ws');
         //injección filtros de consultas
         $this->filter = $this->config['filter'];
+
+        if (class_exists($this->config['repositories']))
+        {
+            $this->repository = new $this->config['repositories'];
+            //dd($this->repository->prueba());
+            //dd("Existe");
+        }
         //conectamos al webservice
         $this->connect();
     }
@@ -166,14 +211,6 @@ class Ws {
         $app->middleware('Jamba\Ws\Middleware\WsMiddleware');
     }
 
-    /**
-     * @return string
-     */
-    public function prueba()
-    {
-        //esto es una prueba
-        return "Estoy aqui";
-    }
 
     //
     // GETS
