@@ -4,4 +4,4 @@
 | Webservice (consultas Webservice)
 | ----------------
  */
-Route::get('ws/{consulta}/{parametro?}', 'Jamba\Ws\Controllers\WsController@get');
+Route::get('webservice/{consulta}/{parametro?}', 'Jamba\Ws\Controllers\WsController@get');
