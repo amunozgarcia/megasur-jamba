@@ -207,7 +207,7 @@ class Ws {
             foreach($this->filter[$consulta] as $a)
             {
                 // entro en los objetos
-                if (!empty($data->$a))
+                if (property_exists($data, $a))
                     $data = $data -> $a;
             }
         }
