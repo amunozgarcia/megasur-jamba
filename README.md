@@ -50,8 +50,8 @@ public function destroy()
 
     return home();
 }
-
-## Example
+```
+## Ejemplo
 
 ```html
 <!DOCTYPE html>
