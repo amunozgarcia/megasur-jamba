@@ -86,6 +86,26 @@ class FlashNotifier
         $this->session->flash('flash_notification.title', $title);
         return $this;
     }
+
+
+    /**
+     * @param string $title
+     * @param $message
+     * @param string $type
+     * @param bool $keepOpen
+     * @return $this
+     */
+    public function alert($title = 'success', $message, $type='', $keepOpen=false)
+    {
+        $this->message($message, $type, $title);
+        $this->session->flash('flash_notification.keepOpen', $keepOpen);
+        $this->session->flash('flash_notification.alert', true);
+        $this->session->flash('flash_notification.title', $title);
+
+        return $this;
+    }
+
+
     /**
      * Flash a general message.
      *

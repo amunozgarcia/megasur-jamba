@@ -44,6 +44,12 @@ class JambaServiceProvider extends ServiceProvider
         //    __DIR__ . '/../../resources/views' => base_path('resources/views/vendor')
         //]);
 
+        $this->publishes([
+            __DIR__.'/../../resources/assets' => public_path('vendor/megasur/jamba'),
+        ], 'jamba');
+
+
+
     }
 
     /**
