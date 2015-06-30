@@ -31,6 +31,7 @@ Funciones para usar
 - `Message::error('Message')`
 - `Message::warning('Message')`
 - `Message::overlay('Modal Message', 'Modal Title')`
+- `Message::alert('title','Message', 'tipo', (bool) keepOpen)`
 
 
 
@@ -46,9 +47,9 @@ public function destroy()
 {
     Auth::logout();
 
-    Message()->success('Mensaje');
+    Message::success('Mensaje');
 
-    return home();
+    return redirect('/');
 }
 ```
 ## Ejemplo
@@ -60,6 +61,7 @@ public function destroy()
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/megasur/jamba/css/metro.css">
 </head>
 <body>
 
@@ -71,8 +73,8 @@ public function destroy()
 
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<!-- This is only necessary if you do Flash::overlay('...') -->
+<script src="/vendor/megasur/jamba/js/metro.js"></script>
+@include('jamba::flash.alert')
 <script>
     $('#flash-overlay-modal').modal();
 </script>
