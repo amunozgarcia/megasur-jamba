@@ -18,9 +18,9 @@ Muestro alerta con redirect
 ```php
 public function store()
 {
-    Flash::message('Welcome Aboard!');
+    Message::message('Welcome Aboard!');
 
-    return Redirect::home();
+    return redirect('/');
 }
 ```
 
@@ -33,8 +33,12 @@ Funciones para usar
 - `Message::overlay('Modal Message', 'Modal Title')`
 - `Message::alert('title','Message', 'tipo', (bool) keepOpen)`
 
-
-
+Añadir en composer.json el siguiente comando artisan para que añada publicos los assets
+```
+"post-update-cmd": [
+    "php artisan vendor:publish --tag=jamba --force"
+],
+```
 Alternativa usando la funcion message():
 
 ```
