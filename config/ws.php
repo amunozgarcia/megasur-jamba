@@ -45,11 +45,10 @@ return [
     | ----------------------
     | Configuración de ip's de seguridad para restringir el acceso
     | a las peticiones webservice mediante URL POST.
+    | Activada la opción de rangos de ip delimitando el rago con el simbolo (*)
+    | ejemplo: 150.150.*
     */
     'secure' => [
-        '37.130.146.144',
-        '150.150.2.52',
-        'tuaccesouno.es',
         'dev'
     ],
     /*
@@ -86,9 +85,10 @@ return [
     |
     */
     'filter' => [
-        'customer_delivery_place'   => ['customer_delivery_placeResult', 'customer_delivery_place_info'],
-        'add_customer'              => ['add_customerResult']
-    ],
-
+        'customer_delivery_place'       => ['customer_delivery_placeResult', 'customer_delivery_place_info'],
+        'add_customer'                  => ['add_customerResult'],
+        'order_esc'					    => ['order_escResult'],
+        'add_customer_delivery_place'   => ['add_customer_delivery_placeResult']
+    ]
 
 ];

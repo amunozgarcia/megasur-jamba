@@ -37,6 +37,13 @@ class JambaServiceProvider extends ServiceProvider
         //cargo sistema de traducciones
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang','megasur');
 
+        //cargo las vistas
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'jamba');
+
+        //$this->publishes([
+        //    __DIR__ . '/../../resources/views' => base_path('resources/views/vendor')
+        //]);
+
     }
 
     /**
@@ -59,6 +66,15 @@ class JambaServiceProvider extends ServiceProvider
             return new WsMiddleware();
         });
 
+        $this->app->bind(
+            'Jamba\Flash\Contracts\SessionStoreInterface',
+            'Jamba\Flash\LaravelSessionStore'
+        );
+
+        $this->app->bindShared('Jamba\Flash\Facade\Message', function () {
+            return $this->app->make('Jamba\Flash\FlashNotifier');
+        });
+
 
         //pruebas
         //dd($this->app);
@@ -73,6 +89,6 @@ class JambaServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['Jamba\Ws\Facade\Ws'];
+        return ['Jamba\Ws\Facade\Ws','Jamba\Flash\Facade\Flash'];
     }
 }
