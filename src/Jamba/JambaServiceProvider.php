@@ -62,6 +62,10 @@ class JambaServiceProvider extends ServiceProvider
         //Cargo la configuracion WS
         $this->mergeConfigFrom(__DIR__ . '/../../config/ws.php', 'ws');
 
+        //Cargo la configuracion Model
+        $this->mergeConfigFrom(__DIR__ . '/../../config/models.php', 'models');
+
+
         //cargo el Facade Ws
         $this->app->singleton('Jamba\Ws\Facade\Ws', function ($app) {
             return new Ws($app);
@@ -72,6 +76,9 @@ class JambaServiceProvider extends ServiceProvider
             return new WsMiddleware();
         });
 
+        //..........................................................................
+        // MESSAGE
+        //..........................................................................
         $this->app->bind(
             'Jamba\Flash\Contracts\SessionStoreInterface',
             'Jamba\Flash\LaravelSessionStore'
@@ -80,7 +87,7 @@ class JambaServiceProvider extends ServiceProvider
         $this->app->bindShared('Jamba\Flash\Facade\Message', function () {
             return $this->app->make('Jamba\Flash\FlashNotifier');
         });
-
+        //..........................................................................
 
         //pruebas
         //dd($this->app);

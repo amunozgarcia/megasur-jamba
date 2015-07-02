@@ -17,10 +17,11 @@
       "classmap": [
       ],
       "psr-4": {
-        "Jamba\\": "src/Jamba/"
+        "Jamba\\": "src/Jamba/",
+        "Asp\\": "src/Asp/"
       }
     },
-    "minimum-stability": "1.0.0",
+    "minimum-stability": "dev",
     "require": {
       "php": ">=5.4.0"
     }
